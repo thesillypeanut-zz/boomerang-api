@@ -1,6 +1,7 @@
 import base64
 import json
 import unittest
+from datetime import datetime
 
 from constants import TEST_USER_URL_PATH
 from tests.helpers import assert_error
@@ -9,9 +10,13 @@ from tests.unit.common import BaseTestCase
 
 class EventTestCase(BaseTestCase):
     def test_create_event_is_successful(self):
-        user_payload = {
-            'first_name': 'Maliha',
-            'last_name': 'Islam',
+        self.register_user()
+        logged_in_user = self.login_user()
+        token = json.loads(logged_in_user.get_data())['token']
+
+        event_payload = {
+            'name': 'Maliha\'s bday bash',
+            'date': datetime(2019, 3, 7, 10, 23),
             'email': 'maliha@abc.com',
             'password': 'PASSWORD'
         }
