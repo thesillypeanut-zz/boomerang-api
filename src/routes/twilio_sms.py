@@ -14,7 +14,7 @@ def add_routes(app):
     ),
     app.add_url_rule(
         rule=f'{TWILIO_URL_PATH}/responses/',
-        methods=['POST', 'GET'],
+        methods=['POST'],
         view_func=save_response,
         endpoint=save_response.__name__
     ),
