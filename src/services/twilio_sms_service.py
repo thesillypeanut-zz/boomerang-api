@@ -62,8 +62,7 @@ def save_response(response_form):
     message_service.create(response_form['MessageSid'], response, parent_message['creator_id'], parent_message_id)
 
     resp = MessagingResponse()
-    resp.message("Your response was saved!")
-
+    resp.message("Thanks! Your response has been sent to the event organizer.")
     return str(resp)
 
 

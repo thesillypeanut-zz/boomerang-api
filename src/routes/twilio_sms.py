@@ -8,13 +8,13 @@ from src.services import twilio_sms_service
 def add_routes(app):
     app.add_url_rule(
         rule=f'{TWILIO_URL_PATH}/delivery',
-        methods=['POST'],
+        methods=['POST', 'GET'],
         view_func=create_delivery_status,
         endpoint=create_delivery_status.__name__
     ),
     app.add_url_rule(
         rule=f'{TWILIO_URL_PATH}/responses/',
-        methods=['POST'],
+        methods=['POST', 'GET'],
         view_func=save_response,
         endpoint=save_response.__name__
     ),
@@ -28,7 +28,7 @@ def add_routes(app):
 
 @json_response(201)
 def create_delivery_status():
-    pass
+    return request.form
 
 
 @json_response(201)
