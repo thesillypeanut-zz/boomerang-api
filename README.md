@@ -1,6 +1,7 @@
 # Boomerang API
 
-A simple server side web API that uses CRUD operations to query products and simulate shopping cart transactions in an online marketplace, built using the Flask microframework and SQLite database. 
+A server side web API that uses CRUD operations to create events, send bulk SMS invites and view invitee responses, 
+built using the Flask microframework, SQLite database and Twilio Programmable SMS API (https://www.twilio.com/docs/sms). 
 
 ## Requirements
 
@@ -20,8 +21,8 @@ sudo pip3 install virtualenv
 
 ```bash
 # Clone this repository and cd into it:
-git clone https://github.com/thesillypeanut/online-marketplace-api.git
-cd online-marketplace-api/
+git clone https://github.com/thesillypeanut/boomerang-api.git
+cd boomerang-api/
 
 # Create and activate your virtual environment:
 virtualenv venv
@@ -36,19 +37,13 @@ python3 run.py
 
 ## Try Out the API
 
-This is a sample testing flow of creating and completing a cart by placing an order on the cart. Commands for the 
+This is a sample testing flow of creating an event, inviting guests and viewing invitee responses. Commands for the 
 following API requests can be found in the "Database Models and API Usage" section.
 
-1. Database: Initialize DB
-2. Database: Fill db with sample products
-3. User: Create a user
-4. User: Login the user
+1. User: Create a user
+2. User: Login the user
    * You will receive an authentication token
-5. Product: Fetch products to check what is available
-6. Cart-Item: Create cart-item(s) using product id(s) to add product(s) to your cart
-   * The first cart-item posted will automatically create a cart
-7. Order: Create an order on a cart
-8. Product: Fetch products to check updated inventory counts 
+3. Event: Create an event
 
 
 ## Database Models and API Usage

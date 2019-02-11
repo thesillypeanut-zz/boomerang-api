@@ -85,7 +85,7 @@ class EventInvitee(db.Model):
 class MessageRecipient(db.Model):
     id = db.Column(UUIDType(binary=False), primary_key=True, default=generate_uuid)
     date_received = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    recipient_id = db.Column(UUIDType(binary=False), db.ForeignKey('recipient.id'))
+    recipient_id = db.Column(UUIDType(binary=False), db.ForeignKey('message_recipient.id'))
     recipient_group_id = db.Column(UUIDType(binary=False), db.ForeignKey('event_invitee.id'))
     message_id = db.Column(UUIDType(binary=False), db.ForeignKey('message.id'), nullable=False)
 

@@ -20,8 +20,9 @@ def create_app(config_name):
     # db.drop_all(app=app)
     # db.create_all(app=app)
 
-    from src.routes import user, database
+    from src.routes import user, database, event
     user.add_routes(app)
     database.add_routes(app)
+    event.add_routes(app)
 
     return app
