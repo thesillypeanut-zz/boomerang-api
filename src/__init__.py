@@ -9,7 +9,7 @@ db = SQLAlchemy()
 bcrypt = Bcrypt()
 
 def create_app(config_name):
-    from src.validation.models import User, Event, Message, EventInvitee, MessageRecipient
+    from src.validation.models import User, Event, Message, EventInvitee, MessageRecipient, Invitee
 
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_object(app_config[config_name])
@@ -17,12 +17,13 @@ def create_app(config_name):
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
     db.init_app(app)
-    # db.drop_all(app=app)
-    # db.create_all(app=app)
+    db.drop_all(app=app)
+    db.create_all(app=app)
 
-    from src.routes import user, database, event
+    from src.routes import user, database, event, twilio_sms
     user.add_routes(app)
     database.add_routes(app)
     event.add_routes(app)
+    twilio_sms.add_routes(app)
 
     return app

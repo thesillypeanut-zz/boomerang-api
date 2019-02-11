@@ -16,7 +16,7 @@ class EventTestCase(BaseTestCase):
 
         event_payload = {
             'name': 'Maliha\'s bday bash',
-            'date': datetime(2019, 3, 7, 10, 23),
+            'date': 'Mar 2 2019  7:00PM',
             'invitees': [
                 {
                     'name': 'Maliha',
@@ -26,7 +26,7 @@ class EventTestCase(BaseTestCase):
                     'phone': '+14155298990'
                 }
             ],
-            'sms_content': 'You are invited to Maliha\'s bday bash! Please RSVP.'
+            'sms_content': ''
         }
 
         response = self.client.post(
@@ -52,7 +52,7 @@ class EventTestCase(BaseTestCase):
                     'phone': '+16478231710'
                 }
             ],
-            'sms_content': 'You are invited to Maliha\'s bday bash! Please RSVP.'
+            'sms_content': ''
         }
         self.client.post(
             f'{TEST_EVENT_URL_PATH}/',

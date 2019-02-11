@@ -170,9 +170,15 @@ python3 manage.py db upgrade
 ```
 
 ## Testing
+Unit tests are written to automate testing for the various services.
+
 ```bash
+# Run all tests:
 pytest
+
+# Run all tests with debugging (no capture):
 pytest -s
-pytest -s tests/unit/test_user_service.py::UserTestCase::test_list_all_users_is_
-successful
+
+# Run a single test (file-path::class-name::test-name):
+pytest tests/unit/test_user_service.py::UserTestCase::test_list_all_users_is_successful
 ```

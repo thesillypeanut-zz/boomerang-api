@@ -4,6 +4,7 @@ from flask import make_response, jsonify, request
 
 from instance.config import Config
 from src.helpers import handle_exception
+from src.services import event_service
 from src.validation.models import User
 
 
@@ -71,3 +72,11 @@ def _validate_authorized_user(requested_url, current_user):
     if resource == 'users':
         if str(current_user.id) != resource_id:
             raise handle_exception('Unauthorized: You can only modify your own account.', 401)
+
+    elif resource == 'events':
+        if resource_id not in [str(event.id) for event in current_user.events]:
+            raise handle_exception('Unauthorized: You can only fetch or modify your events.', 401)
+
+        event = event_service.get(resource_id)
+        if event['organizer_id'] != current_user.id:
+            raise handle_exception('Unauthorized: You can only modify your events.', 401)

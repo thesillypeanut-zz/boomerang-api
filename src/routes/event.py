@@ -48,19 +48,14 @@ def list_events(current_user):
 @json_response(200)
 @token_required
 def get_event(current_user, event_id):
-    if not current_user.carts:
-        return 'Unauthorized: You can only fetch your own carts.', 401
-
-    if event_id not in [str(cart.id) for cart in current_user.carts]:
-        return 'Unauthorized: You can only fetch your own carts.', 401
-
     return event_service.get(event_id)
 
 
 @json_response(201)
+@token_required
 @json_request_validator(create_validators.build)
-def create_event():
-    return event_service.create(request.json)
+def create_event(current_user):
+    return event_service.create(request.json, current_user)
 
 
 @json_response(200)
@@ -74,9 +69,4 @@ def edit_event(current_user, user_id):
 @json_response(204)
 @token_required
 def delete_event(current_user, event_id):
-    cart = event_service.get(event_id)
-
-    if cart['customer_id'] != current_user.id:
-        return 'Unauthorized: You can only delete your own carts.', 401
-
     return event_service.delete(event_id)

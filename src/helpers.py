@@ -1,3 +1,4 @@
+import random
 import uuid
 from flask import make_response
 from werkzeug import exceptions
@@ -5,6 +6,10 @@ from werkzeug import exceptions
 
 def generate_uuid():
     return uuid.uuid4()
+
+
+def generate_code():
+    return str(random.randint(999, 9999))
 
 
 def validate_cart_item_quantity_is_not_more_than_product_inventory(product_inventory, item_quantity, product_id):

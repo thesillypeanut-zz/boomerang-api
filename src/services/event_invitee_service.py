@@ -1,6 +1,10 @@
 from src.validation.models import EventInvitee
-from src.services import database_service, invitee_service
+from src.services import database_service
 
 
 def list_all():
     return database_service.get_entity_instances(EventInvitee)
+
+
+def create(event_id, invitee_id):
+    return database_service.post_entity_instance(EventInvitee, {'event_id': event_id, 'invitee_id': invitee_id})

@@ -2,7 +2,7 @@ from datetime import datetime
 from sqlalchemy_utils import UUIDType
 
 from src import db, bcrypt
-from src.helpers import generate_uuid
+from src.helpers import generate_uuid, generate_code
 
 
 class User(db.Model):
@@ -47,6 +47,7 @@ class Event(db.Model):
     date_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     organizer_id = db.Column(UUIDType(binary=False), db.ForeignKey('user.id'), nullable=False)
     event_invitees = db.relationship('EventInvitee', backref='event', lazy=True, cascade="delete")
+    event_code = db.Column(db.String(4), unique=True, nullable=False, default=generate_code)
 
     def __repr__(self):
         return f"Event('{self.name}', '{self.date}', '{self.date_created}')"
@@ -58,7 +59,11 @@ class Event(db.Model):
             "date": self.date,
             "organizer_id": self.organizer_id,
             "date_created": self.date_created,
-            "event_invitees": [item.id for item in self.event_invitees]
+            "event_invitees": [
+                {'id': item.id, 'event_id': item.event_id, 'invitee_id': item.invitee_id}
+                for item in self.event_invitees
+            ],
+            "event_code": self.event_code
         }
 
 
@@ -87,10 +92,11 @@ class MessageRecipient(db.Model):
     date_received = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     recipient_id = db.Column(UUIDType(binary=False), db.ForeignKey('invitee.id'))
     recipient_group_id = db.Column(UUIDType(binary=False), db.ForeignKey('event_invitee.id'))
-    message_id = db.Column(UUIDType(binary=False), db.ForeignKey('message.id'), nullable=False)
+    message_id = db.Column(db.String(34), db.ForeignKey('message.id'), nullable=False)
+    response = db.Column(db.String(1600))
 
     def __repr__(self):
-        return f"MessageRecipient('{self.recipient_id}', '{self.recipient_group_id}', '{self.date_received}')"
+        return f"MessageRecipient('{self.recipient_id}', '{self.recipient_group_id}', '{self.response}', '{self.date_received}')"
 
     def serialize(self):
         return {
@@ -98,14 +104,15 @@ class MessageRecipient(db.Model):
             "date_received": self.date_received,
             "recipient_id": self.recipient_id,
             "recipient_group_id": self.recipient_group_id,
-            "message_id": self.message_id
+            "message_id": self.message_id,
+            "response": self.response
         }
 
 
 class Invitee(db.Model):
     id = db.Column(UUIDType(binary=False), primary_key=True, default=generate_uuid)
     phone = db.Column(db.String(12), unique=True, nullable=False)
-    name = db.Column(db.String(100), nullable=False)
+    name = db.Column(db.String(100), nullable=True)
     event_invitees = db.relationship('EventInvitee', backref='invitee', lazy=True, cascade="delete")
     message_recipients = db.relationship('MessageRecipient', backref='invitee', lazy=True, cascade="delete")
 
@@ -123,11 +130,11 @@ class Invitee(db.Model):
 
 
 class Message(db.Model):
-    id = db.Column(UUIDType(binary=False), primary_key=True, default=generate_uuid)
-    sms_content = db.Column(db.String(250), nullable=False)
+    id = db.Column(db.String(34), primary_key=True)
+    sms_content = db.Column(db.String(1600), nullable=False)
     date_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     creator_id = db.Column(UUIDType(binary=False), db.ForeignKey('user.id'), nullable=False)
-    parent_message_id = db.Column(UUIDType(binary=False), db.ForeignKey('message.id'), nullable=True)
+    parent_message_id = db.Column(db.String(34), db.ForeignKey('message.id'), nullable=True)
     message_recipients = db.relationship('MessageRecipient', backref='message', lazy=True, cascade="delete")
 
     def __repr__(self):
