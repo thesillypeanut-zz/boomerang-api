@@ -1,5 +1,5 @@
 from src.validation.models import Event
-from src.services import database_service, invitee_service, event_invitee_service
+from src.services import database_service
 
 
 def create(event_instance):

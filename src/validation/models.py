@@ -46,7 +46,7 @@ class Event(db.Model):
     date = db.Column(db.DateTime, nullable=False)
     date_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     organizer_id = db.Column(UUIDType(binary=False), db.ForeignKey('user.id'), nullable=False)
-    event_invitees = db.relationship('EventInvitee', backref='event', lazy=True, secondary='', cascade="delete")
+    event_invitees = db.relationship('EventInvitee', backref='event', lazy=True, cascade="delete")
 
     def __repr__(self):
         return f"Event('{self.name}', '{self.date}', '{self.date_created}')"
@@ -85,12 +85,12 @@ class EventInvitee(db.Model):
 class MessageRecipient(db.Model):
     id = db.Column(UUIDType(binary=False), primary_key=True, default=generate_uuid)
     date_received = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    recipient_id = db.Column(UUIDType(binary=False), db.ForeignKey('message_recipient.id'))
+    recipient_id = db.Column(UUIDType(binary=False), db.ForeignKey('invitee.id'))
     recipient_group_id = db.Column(UUIDType(binary=False), db.ForeignKey('event_invitee.id'))
     message_id = db.Column(UUIDType(binary=False), db.ForeignKey('message.id'), nullable=False)
 
     def __repr__(self):
-        return f"MessageRecipient('{self.event_id}', '{self.invitee_id}', '{self.date_received}')"
+        return f"MessageRecipient('{self.recipient_id}', '{self.recipient_group_id}', '{self.date_received}')"
 
     def serialize(self):
         return {
