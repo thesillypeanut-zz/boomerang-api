@@ -8,3 +8,7 @@ def create(invitee_instance):
 
 def get(invitee_id):
     return database_service.get_entity_instance_by_id(Invitee, invitee_id)
+
+
+def list_all():
+    return database_service.get_entity_instances(Invitee)

@@ -20,10 +20,14 @@ def create_app(config_name):
     db.drop_all(app=app)
     db.create_all(app=app)
 
-    from src.routes import user, database, event, twilio_sms
+    from src.routes import user, database, event, twilio_sms, event_invitee, invitee, message, message_recipient
     user.add_routes(app)
     database.add_routes(app)
     event.add_routes(app)
     twilio_sms.add_routes(app)
+    event_invitee.add_routes(app)
+    invitee.add_routes(app)
+    message.add_routes(app)
+    message_recipient.add_routes(app)
 
     return app

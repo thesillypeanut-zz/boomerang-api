@@ -12,3 +12,7 @@ def create(message_id, recipient_id=None, recipient_group_id=None):
         return database_service.post_entity_instance(
             MessageRecipient, {'message_id': message_id, 'recipient_id': recipient_id}
         )
+
+
+def list_all():
+    return database_service.get_entity_instances(MessageRecipient)

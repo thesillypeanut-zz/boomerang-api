@@ -12,3 +12,7 @@ def create(id, body, creator_id, parent_message_id=None):
 
 def get(message_id):
     return database_service.get_entity_instance_by_id(Message, message_id)
+
+
+def list_all():
+    return database_service.get_entity_instances(Message)

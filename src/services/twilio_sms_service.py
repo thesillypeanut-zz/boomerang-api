@@ -3,8 +3,8 @@ from twilio.twiml.messaging_response import MessagingResponse
 
 from constants import TWILIO_CALLBACK_PATH
 from src.helpers import handle_exception
-from src.services import message_service, invitee_service, database_service
-from src.validation.models import Event, MessageRecipient, Message
+from src.services import message_service, invitee_service
+from src.validation.models import Event, MessageRecipient
 
 client = Client('ACdc8ff33a38fa6e0055a4720ef13f7e6c', 'b9854bf8857fe3edfa9905f2a6ca8f24')
 TWILIO_PHONE_NUM = '+16479314760'
@@ -67,4 +67,4 @@ def save_response(response_form):
 
 
 def list_all():
-    return database_service.get_entity_instances(Message)
+    return message_service.list_all()
