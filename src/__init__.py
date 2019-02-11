@@ -17,8 +17,8 @@ def create_app(config_name):
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
     db.init_app(app)
-    # db.drop_all(app=app)
-    # db.create_all(app=app)
+    db.drop_all(app=app)
+    db.create_all(app=app)
 
     from src.routes import user, database, event, twilio_sms, event_invitee, invitee, message, message_recipient
     user.add_routes(app)
