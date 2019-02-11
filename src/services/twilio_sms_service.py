@@ -17,7 +17,7 @@ def send_sms(phone_num, sms_body, creator_id):
         to=phone_num,
         status_callback=TWILIO_CALLBACK_PATH
     )
-    print(message.sid)
+
     message_id = message.sid
     message_service.create(message_id, sms_body, creator_id)
     return message_id
@@ -50,7 +50,7 @@ def save_response(response_form):
     # https://stackoverflow.com/questions/50075375/receiving-and-processing-an-sms-with-twilio-in-python
     from_number = response_form['From']
     body = response_form['Body'].strip().split(' ')
-    response, event_code = body[0], body[1]
+    response, event_code = body[0].lower(), body[1]
 
     recipient_id_object = _find_event_and_get_recipient_id_object(event_code, from_number)
 
@@ -64,7 +64,3 @@ def save_response(response_form):
     resp = MessagingResponse()
     resp.message("Thanks! Your response has been sent to the event organizer.")
     return str(resp)
-
-
-def list_all():
-    return message_service.list_all()

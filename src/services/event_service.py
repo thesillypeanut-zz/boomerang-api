@@ -35,7 +35,7 @@ def create(event_instance, current_user):
     event = _create_event(current_user_id)
     _create_invitees_and_message(event['event_code'])
 
-    return event
+    return get(event['id'])
 
 
 def update(event_id, event_instance):
@@ -46,12 +46,12 @@ def delete(event_id):
     return database_service.delete_entity_instance(Event, event_id)
 
 
-def get(event_id, serialize=True):
-    return database_service.get_entity_instance_by_id(Event, event_id, serialize)
+def get(event_id):
+    return database_service.get_entity_instance_by_id(Event, event_id)
 
 
-def get_by_event_code(event_code, serialize=True):
-    return database_service.get_entity_instance_by_id(Event, event_code, serialize)
+def get_by_event_code(event_code):
+    return database_service.get_entity_instance_by_id(Event, event_code)
 
 
 def list_all(filter_by):

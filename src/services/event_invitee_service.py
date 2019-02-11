@@ -6,5 +6,9 @@ def list_all():
     return database_service.get_entity_instances(EventInvitee)
 
 
+def get(event_invitee_id):
+    return database_service.get_entity_instance_by_id(EventInvitee, event_invitee_id)
+
+
 def create(event_id, invitee_id):
     return database_service.post_entity_instance(EventInvitee, {'event_id': event_id, 'invitee_id': invitee_id})

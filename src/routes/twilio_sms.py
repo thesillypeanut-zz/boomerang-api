@@ -17,12 +17,6 @@ def add_routes(app):
         methods=['POST'],
         view_func=save_response,
         endpoint=save_response.__name__
-    ),
-    app.add_url_rule(
-        rule=f'{TWILIO_URL_PATH}/responses/',
-        methods=['GET'],
-        view_func=list_responses,
-        endpoint=list_responses.__name__
     )
 
 
@@ -34,8 +28,3 @@ def create_delivery_status():
 @json_response(201)
 def save_response():
     return twilio_sms_service.save_response(request.form)
-
-
-@json_response(200)
-def list_responses():
-    return twilio_sms_service.list_all()

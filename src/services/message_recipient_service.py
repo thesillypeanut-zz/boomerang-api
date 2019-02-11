@@ -16,3 +16,7 @@ def create(message_id, recipient_id=None, recipient_group_id=None):
 
 def list_all():
     return database_service.get_entity_instances(MessageRecipient)
+
+
+def get(message_recipient_id):
+    return database_service.get_entity_instance_by_id(MessageRecipient, message_recipient_id)
