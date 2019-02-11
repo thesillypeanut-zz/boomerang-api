@@ -1,6 +1,6 @@
 from src.validation import common_validators
 
-ALLOWED_FIELDS = ['name', 'date']
+ALLOWED_FIELDS = ['name', 'date', 'sms_content']
 
 
 def build(request):

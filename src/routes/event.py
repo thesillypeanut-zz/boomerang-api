@@ -62,8 +62,7 @@ def create_event(current_user):
 @json_request_validator(edit_validators.build)
 @token_required
 def edit_event(current_user, user_id):
-    pass
-    # return event_service.update(user_id, request.json)
+    return event_service.update(user_id, request.json)
 
 
 @json_response(204)

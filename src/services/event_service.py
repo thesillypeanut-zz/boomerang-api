@@ -24,7 +24,7 @@ def create(event_instance, current_user):
             invitee = invitee_service.create(invitee)
             event_invitee = event_invitee_service.create(event['id'], invitee['id'])
 
-            sms_body = f'{current_user["first_name"]} {current_user["last_name"]} has invited you to ' \
+            sms_body = f'{current_user.first_name} {current_user.last_name} has invited you to ' \
                        f'{event_instance["name"]} on {event_instance["date"]}\n{event_instance["sms_content"]}\n' \
                        f'RSVP with "yes {event_code}" or "no {event_code}".'
             message_id = twilio_sms_service.send_sms(invitee['phone'], sms_body, current_user.id)
@@ -36,6 +36,10 @@ def create(event_instance, current_user):
     _create_invitees_and_message(event['event_code'])
 
     return event
+
+
+def update(event_id, event_instance):
+    pass
 
 
 def delete(event_id):
