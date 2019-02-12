@@ -37,13 +37,27 @@ python3 run.py
 
 ## Try Out the API
 
-This is a sample testing flow of creating an event, inviting guests and viewing invitee responses. Commands for the 
-following API requests can be found in the "Database Models and API Usage" section.
+This is a sample testing flow of creating an event, inviting guests and viewing invitee responses.
 
-1. User: Create a user
-2. User: Login the user
-   * You will receive an authentication token
-3. Event: Create an event
+Create a user:
+```bash
+curl -H "Content-Type: application/json" -X POST -d '{"username":"USERNAME", "password":"PASSWORD"}' http://localhost:5000/api/v1/users/
+```
+
+Login the user:
+```bash
+curl --user <USERNAME>:<PASSWORD> http://localhost:5000/api/v1/users/login
+```
+You will receive an authentication token. Please note that you need to use the token you received in the previous step 
+to perform most requests from here on. For your convenience, you can save the token in an environment variable:
+```bash
+export TOKEN="YOUR-TOKEN-HERE"
+echo "$TOKEN"
+```
+Your token will expire in 1 hour. Login again to get a new token and update your environment variable as necessary.
+
+Create an event:
+
 
 
 ## Database Models and API Usage

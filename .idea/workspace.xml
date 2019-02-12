@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ae8bbdf0-fac9-4952-90e4-4bdeb7dd86f1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/routes/message.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/message.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/user.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/message_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/message_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/user_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/user_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,7 +29,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Bash" value="11" />
-          <entry key="Markdown" value="636" />
+          <entry key="Markdown" value="664" />
           <entry key="PLAIN_TEXT" value="55" />
           <entry key="Python" value="10124" />
           <entry key="Scratch" value="151" />
@@ -154,8 +151,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="190">
-                <caret line="67" column="50" lean-forward="true" selection-start-line="67" selection-start-column="50" selection-end-line="67" selection-end-column="61" />
+              <first_editor relative-caret-position="263">
+                <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
               </first_editor>
               <second_editor />
             </state>
@@ -231,7 +228,6 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/Procfile" />
         <option value="$PROJECT_DIR$/src/validation/event/create_validators.py" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/helpers.py" />
         <option value="$PROJECT_DIR$/src/validation/models.py" />
         <option value="$PROJECT_DIR$/src/routes/decorators.py" />
@@ -254,6 +250,7 @@
         <option value="$PROJECT_DIR$/src/services/user_service.py" />
         <option value="$PROJECT_DIR$/src/routes/message.py" />
         <option value="$PROJECT_DIR$/src/services/message_service.py" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -796,8 +793,8 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="190">
-            <caret line="67" column="50" lean-forward="true" selection-start-line="67" selection-start-column="50" selection-end-line="67" selection-end-column="61" />
+          <first_editor relative-caret-position="263">
+            <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
           </first_editor>
           <second_editor />
         </state>
