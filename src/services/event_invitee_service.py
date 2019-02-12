@@ -7,7 +7,7 @@ def list_all():
 
 
 def get(event_invitee_id):
-    return database_service.get_entity_instance_by_id(EventInvitee, event_invitee_id)
+    return database_service.get_entity_instance_by_id(EventInvitee, event_invitee_id, is_id_primary_key=False)
 
 
 def create(event_id, invitee_id):
