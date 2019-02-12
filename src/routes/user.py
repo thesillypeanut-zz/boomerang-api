@@ -49,7 +49,7 @@ def add_routes(app):
 @json_response(200)
 @token_required
 def list_users(current_user):
-    return user_service.list_all(request.args)
+    return user_service.list_all()
 
 
 # TODO: only allow admins to access this route

@@ -25,8 +25,8 @@ def get(user_id):
     return database_service.get_entity_instance_by_id(User, user_id)
 
 
-def list_all(filter_by):
-    return database_service.get_entity_instances(User, filter_by=filter_by)
+def list_all():
+    return database_service.get_entity_instances(User)
 
 
 def login(auth):

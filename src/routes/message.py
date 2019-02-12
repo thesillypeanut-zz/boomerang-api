@@ -21,7 +21,7 @@ def add_routes(app):
 @json_response(200)
 @token_required
 def list_messages(current_user):
-    return message_service.list_all()
+    return message_service.list_all(request.args)
 
 
 @json_response(200)
