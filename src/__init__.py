@@ -9,7 +9,7 @@ db = SQLAlchemy()
 bcrypt = Bcrypt()
 
 def create_app(config_name):
-    from src.validation.models import User, Event, Message, EventInvitee, MessageRecipient, Invitee
+    from src.models import User, Event, Message, EventInvitee, MessageRecipient, Invitee
 
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_object(app_config[config_name])

@@ -5,7 +5,7 @@ from flask import make_response, jsonify, request
 from instance.config import Config
 from src.helpers import handle_exception
 from src.services import event_service
-from src.validation.models import User
+from src.models import User
 
 
 def json_response(status_code):

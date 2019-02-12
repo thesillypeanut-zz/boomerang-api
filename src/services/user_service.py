@@ -3,7 +3,7 @@ import logging
 from datetime import datetime, timedelta
 
 from instance.config import Config
-from src.validation.models import User
+from src.models import User
 from src.services import database_service
 
 logger = logging.getLogger(__name__)

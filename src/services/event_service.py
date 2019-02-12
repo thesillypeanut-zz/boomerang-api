@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from src.validation.models import Event
+from src.models import Event
 from src.services import (
     database_service,
     invitee_service,

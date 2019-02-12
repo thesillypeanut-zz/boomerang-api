@@ -1,4 +1,4 @@
-from src.validation.models import MessageRecipient
+from src.models import MessageRecipient
 from src.services import database_service
 
 

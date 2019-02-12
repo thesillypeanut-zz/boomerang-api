@@ -1,4 +1,4 @@
-from src.validation.models import Invitee
+from src.models import Invitee
 from src.services import database_service
 
 
