@@ -38,6 +38,7 @@ python3 run.py
 ## Database Models
 The design of this database model was inspired by 
 [Database Model for a Messaging System](https://www.vertabelo.com/blog/technical-articles/database-model-for-a-messaging-system).
+
 <img src="/database_design.png">
 
 ## Try Out the API
